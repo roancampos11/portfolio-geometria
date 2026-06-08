@@ -447,73 +447,108 @@ function initEulerWidget() {
     const eulerA = document.getElementById("euler-a");
     const eulerF = document.getElementById("euler-f");
     const eulerCheck = document.getElementById("euler-check");
-    const modelContainer = document.getElementById("cube-3d-model");
+    const svgEl = document.getElementById("euler-3d-svg");
     
-    if (!solidSelect || !modelContainer) return;
+    if (!solidSelect || !svgEl) return;
     
     const solidsData = {
-        "tetraedro": { v: 4, a: 6, f: 4, label: "Tetraedro" },
-        "cubo": { v: 8, a: 12, f: 6, label: "Hexaedro (Cubo)" },
-        "octaedro": { v: 6, a: 12, f: 8, label: "Octaedro" },
-        "dodecaedro": { v: 20, a: 30, f: 12, label: "Dodecaedro" },
-        "icosaedro": { v: 12, a: 30, f: 20, label: "Icosaedro" },
-        "prisma-tri": { v: 6, a: 9, f: 5, label: "Prisma Triangular" },
-        "piramide-quad": { v: 5, a: 8, f: 5, label: "Pirâmide Quadrangular" }
+        "tetraedro": { 
+            v: 4, a: 6, f: 4, label: "Tetraedro",
+            vertices: [
+                {x: 45, y: 45, z: 45},
+                {x: -45, y: -45, z: 45},
+                {x: -45, y: 45, z: -45},
+                {x: 45, y: -45, z: -45}
+            ],
+            edges: [[0,1], [0,2], [0,3], [1,2], [1,3], [2,3]]
+        },
+        "cubo": { 
+            v: 8, a: 12, f: 6, label: "Hexaedro (Cubo)",
+            vertices: [
+                {x: -40, y: -40, z: -40},
+                {x: 40, y: -40, z: -40},
+                {x: 40, y: 40, z: -40},
+                {x: -40, y: 40, z: -40},
+                {x: -40, y: -40, z: 40},
+                {x: 40, y: -40, z: 40},
+                {x: 40, y: 40, z: 40},
+                {x: -40, y: 40, z: 40}
+            ],
+            edges: [[0,1], [1,2], [2,3], [3,0], [4,5], [5,6], [6,7], [7,4], [0,4], [1,5], [2,6], [3,7]]
+        },
+        "octaedro": { 
+            v: 6, a: 12, f: 8, label: "Octaedro",
+            vertices: [
+                {x: 55, y: 0, z: 0},
+                {x: -55, y: 0, z: 0},
+                {x: 0, y: 55, z: 0},
+                {x: 0, y: -55, z: 0},
+                {x: 0, y: 0, z: 55},
+                {x: 0, y: 0, z: -55}
+            ],
+            edges: [[0,2], [2,1], [1,3], [3,0], [0,4], [1,4], [2,4], [3,4], [0,5], [1,5], [2,5], [3,5]]
+        },
+        "dodecaedro": { 
+            v: 20, a: 30, f: 12, label: "Dodecaedro",
+            vertices: [
+                {x: -25, y: -25, z: -25}, {x: 25, y: -25, z: -25}, {x: 25, y: 25, z: -25}, {x: -25, y: 25, z: -25},
+                {x: -25, y: -25, z: 25}, {x: 25, y: -25, z: 25}, {x: 25, y: 25, z: 25}, {x: -25, y: 25, z: 25},
+                {x: 0, y: -15.45, z: -40.45}, {x: 0, y: 15.45, z: -40.45}, {x: 0, y: -15.45, z: 40.45}, {x: 0, y: 15.45, z: 40.45},
+                {x: -15.45, y: -40.45, z: 0}, {x: 15.45, y: -40.45, z: 0}, {x: 15.45, y: 40.45, z: 0}, {x: -15.45, y: 40.45, z: 0},
+                {x: -40.45, y: 0, z: -15.45}, {x: 40.45, y: 0, z: -15.45}, {x: 40.45, y: 0, z: 15.45}, {x: -40.45, y: 0, z: 15.45}
+            ],
+            edges: [
+                [8,9],[10,11],[12,13],[14,15],[16,19],[17,18],
+                [0,8],[0,12],[0,16],[1,8],[1,13],[1,17],[2,9],[2,14],[2,17],[3,9],[3,15],[3,16],
+                [4,10],[4,12],[4,19],[5,10],[5,13],[5,18],[6,11],[6,14],[6,18],[7,11],[7,15],[7,19]
+            ]
+        },
+        "icosaedro": { 
+            v: 12, a: 30, f: 20, label: "Icosaedro",
+            vertices: [
+                {x: 0, y: -30, z: -48.54}, {x: 0, y: 30, z: -48.54}, {x: 0, y: -30, z: 48.54}, {x: 0, y: 30, z: 48.54},
+                {x: -30, y: -48.54, z: 0}, {x: 30, y: -48.54, z: 0}, {x: 30, y: 48.54, z: 0}, {x: -30, y: 48.54, z: 0},
+                {x: -48.54, y: 0, z: -30}, {x: 48.54, y: 0, z: -30}, {x: 48.54, y: 0, z: 30}, {x: -48.54, y: 0, z: 30}
+            ],
+            edges: [
+                [0,1],[2,3],[4,7],[5,6],[8,11],[9,10],
+                [0,4],[0,5],[0,8],[0,9],[1,6],[1,7],[1,8],[1,9],
+                [2,4],[2,5],[2,10],[2,11],[3,6],[3,7],[3,10],[3,11],
+                [4,8],[4,11],[7,8],[7,11],[5,9],[5,10],[6,9],[6,10]
+            ]
+        },
+        "prisma-tri": { 
+            v: 6, a: 9, f: 5, label: "Prisma Triangular",
+            vertices: [
+                {x: 35, y: 0, z: -45}, {x: -17.5, y: 30.31, z: -45}, {x: -17.5, y: -30.31, z: -45},
+                {x: 35, y: 0, z: 45}, {x: -17.5, y: 30.31, z: 45}, {x: -17.5, y: -30.31, z: 45}
+            ],
+            edges: [[0,1], [1,2], [2,0], [3,4], [4,5], [5,3], [0,3], [1,4], [2,5]]
+        },
+        "piramide-quad": { 
+            v: 5, a: 8, f: 5, label: "Pirâmide Quadrangular",
+            vertices: [
+                {x: -35, y: 25, z: -35}, {x: 35, y: 25, z: -35}, {x: 35, y: 25, z: 35}, {x: -35, y: 25, z: 35},
+                {x: 0, y: -45, z: 0}
+            ],
+            edges: [[0,1], [1,2], [2,3], [3,0], [0,4], [1,4], [2,4], [3,4]]
+        }
     };
     
-    // HTML templates for 3D spinning wireframes using CSS 3D
-    const css3DHtmlTemplates = {
-        "cubo": `
-            <div class="face front"></div>
-            <div class="face back"></div>
-            <div class="face left"></div>
-            <div class="face right"></div>
-            <div class="face top"></div>
-            <div class="face bottom"></div>
-        `,
-        "tetraedro": `
-            <!-- Styled via CSS skew/rotations for custom triangular structure -->
-            <div class="face tetra-f" style="width:0; height:0; border-left:50px solid transparent; border-right:50px solid transparent; border-bottom:86px solid var(--accent-color); transform: translate3d(0, -28px, 20px) rotateX(20deg); opacity: 0.7; background:none;"></div>
-            <div class="face tetra-l" style="width:0; height:0; border-left:50px solid transparent; border-right:50px solid transparent; border-bottom:86px solid var(--accent-color); transform: translate3d(-35px, -28px, -15px) rotateY(120deg) rotateX(20deg); opacity: 0.7; background:none;"></div>
-            <div class="face tetra-r" style="width:0; height:0; border-left:50px solid transparent; border-right:50px solid transparent; border-bottom:86px solid var(--accent-color); transform: translate3d(35px, -28px, -15px) rotateY(-120deg) rotateX(20deg); opacity: 0.7; background:none;"></div>
-            <div class="face tetra-b" style="width:0; height:0; border-left:50px solid transparent; border-right:50px solid transparent; border-bottom:86px solid var(--accent-color); transform: translate3d(0, 15px, 0) rotateX(90deg); opacity: 0.7; background:none;"></div>
-        `,
-        "prisma-tri": `
-            <!-- Triangular prism with 3 sides + 2 triangular bases -->
-            <div class="face side1" style="width:60px; height:100px; transform: translate3d(-30px, -50px, 17px) rotateY(30deg); background: rgba(99, 102, 241, 0.1); border: 2px solid var(--accent-color);"></div>
-            <div class="face side2" style="width:60px; height:100px; transform: translate3d(0px, -50px, -35px) rotateY(150deg); background: rgba(99, 102, 241, 0.1); border: 2px solid var(--accent-color);"></div>
-            <div class="face side3" style="width:60px; height:100px; transform: translate3d(30px, -50px, 17px) rotateY(-90deg); background: rgba(99, 102, 241, 0.1); border: 2px solid var(--accent-color);"></div>
-            <div class="face base-t" style="width:0; height:0; border-left:30px solid transparent; border-right:30px solid transparent; border-bottom:52px solid var(--accent-color); transform: translate3d(0, -76px, 0) rotateX(90deg); background:none; opacity:0.6;"></div>
-            <div class="face base-b" style="width:0; height:0; border-left:30px solid transparent; border-right:30px solid transparent; border-bottom:52px solid var(--accent-color); transform: translate3d(0, 24px, 0) rotateX(-90deg); background:none; opacity:0.6;"></div>
-        `,
-        "piramide-quad": `
-            <!-- Square base pyramid -->
-            <div class="face pyr-base" style="width:80px; height:80px; transform: translate3d(-40px, 10px, -40px) rotateX(90deg); background: rgba(99, 102, 241, 0.1); border: 2px solid var(--accent-color);"></div>
-            <div class="face pyr-f" style="width:0; height:0; border-left:40px solid transparent; border-right:40px solid transparent; border-bottom:70px solid var(--accent-color); transform: translate3d(-40px, -30px, 40px) rotateX(30deg); background:none; opacity:0.7; transform-origin: center bottom;"></div>
-            <div class="face pyr-b" style="width:0; height:0; border-left:40px solid transparent; border-right:40px solid transparent; border-bottom:70px solid var(--accent-color); transform: translate3d(-40px, -30px, -40px) rotateY(180deg) rotateX(30deg); background:none; opacity:0.7; transform-origin: center bottom;"></div>
-            <div class="face pyr-l" style="width:0; height:0; border-left:40px solid transparent; border-right:40px solid transparent; border-bottom:70px solid var(--accent-color); transform: translate3d(-80px, -30px, 0px) rotateY(-90deg) rotateX(30deg); background:none; opacity:0.7; transform-origin: center bottom;"></div>
-            <div class="face pyr-r" style="width:0; height:0; border-left:40px solid transparent; border-right:40px solid transparent; border-bottom:70px solid var(--accent-color); transform: translate3d(0px, -30px, 0px) rotateY(90deg) rotateX(30deg); background:none; opacity:0.7; transform-origin: center bottom;"></div>
-        `,
-        "default": `
-            <!-- Abstract polyhedral representation of vertices using particles -->
-            <div class="face" style="width:60px; height:60px; border-radius:50%; border:2px dashed var(--accent-color); transform: rotateX(45deg);"></div>
-            <div class="face" style="width:60px; height:60px; border-radius:50%; border:2px dashed var(--accent-color); transform: rotateY(45deg);"></div>
-            <div style="position:absolute; width:10px; height:10px; background:var(--text-color); border-radius:50%; transform:translateZ(40px)"></div>
-            <div style="position:absolute; width:10px; height:10px; background:var(--text-color); border-radius:50%; transform:translateZ(-40px)"></div>
-            <div style="position:absolute; width:10px; height:10px; background:var(--text-color); border-radius:50%; transform:translateX(40px)"></div>
-            <div style="position:absolute; width:10px; height:10px; background:var(--text-color); border-radius:50%; transform:translateX(-40px)"></div>
-        `
-    };
+    let currentSolid = solidSelect.value;
+    let angleX = 0.6;
+    let angleY = 0.6;
+    let animationId = null;
     
     const updateEuler = () => {
-        const solid = solidSelect.value;
-        const data = solidsData[solid];
+        currentSolid = solidSelect.value;
+        const data = solidsData[currentSolid];
+        if (!data) return;
         
         eulerV.textContent = data.v;
         eulerA.textContent = data.a;
         eulerF.textContent = data.f;
         
-        // Show validation step
         const eqStr = `V - A + F = ${data.v} - ${data.a} + ${data.f} = 2 \\quad (\\text{Válido!})`;
         
         if (typeof katex !== "undefined") {
@@ -521,17 +556,88 @@ function initEulerWidget() {
         } else {
             eulerCheck.textContent = `V - A + F = ${data.v} - ${data.a} + ${data.f} = 2 (Válido!)`;
         }
+    };
+    
+    const renderLoop = () => {
+        angleX += 0.006;
+        angleY += 0.010;
         
-        // Update 3D wireframe visuals
-        modelContainer.innerHTML = css3DHtmlTemplates[solid] || css3DHtmlTemplates["default"];
+        const data = solidsData[currentSolid];
+        if (data) {
+            drawSolid(data);
+        }
+        animationId = requestAnimationFrame(renderLoop);
+    };
+    
+    const drawSolid = (data) => {
+        svgEl.innerHTML = "";
         
-        // Small tweak to center templates correctly if class changes
-        modelContainer.className = "solid-3d-container " + solid;
+        const cosX = Math.cos(angleX);
+        const sinX = Math.sin(angleX);
+        const cosY = Math.cos(angleY);
+        const sinY = Math.sin(angleY);
+        
+        const projected = data.vertices.map(v => {
+            const x1 = v.x * cosY - v.z * sinY;
+            const z1 = v.x * sinY + v.z * cosY;
+            
+            const y2 = v.y * cosX - z1 * sinX;
+            const z2 = v.y * sinX + z1 * cosX;
+            
+            const d = 250;
+            const scale = d / (d + z2);
+            
+            return {
+                x: 100 + x1 * scale,
+                y: 100 + y2 * scale,
+                z: z2
+            };
+        });
+        
+        // Draw edges (lines)
+        data.edges.forEach(edge => {
+            const p1 = projected[edge[0]];
+            const p2 = projected[edge[1]];
+            
+            const line = document.createElementNS("http://www.w3.org/2000/svg", "line");
+            line.setAttribute("x1", p1.x);
+            line.setAttribute("y1", p1.y);
+            line.setAttribute("x2", p2.x);
+            line.setAttribute("y2", p2.y);
+            
+            const avgZ = (p1.z + p2.z) / 2;
+            const opacity = 0.8 - ((avgZ + 60) / 120) * 0.5;
+            
+            line.setAttribute("stroke", "var(--accent-color)");
+            line.setAttribute("stroke-width", "2");
+            line.setAttribute("opacity", Math.max(0.15, Math.min(0.9, opacity)));
+            
+            svgEl.appendChild(line);
+        });
+        
+        // Draw vertices (circles)
+        projected.forEach(p => {
+            const circle = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+            circle.setAttribute("cx", p.x);
+            circle.setAttribute("cy", p.y);
+            
+            const zDepth = p.z;
+            const r = 4.5 - (zDepth / 60) * 1.5;
+            const opacity = 0.9 - (zDepth / 60) * 0.4;
+            
+            circle.setAttribute("r", Math.max(2, Math.min(6, r)));
+            circle.setAttribute("fill", "#a78bfa");
+            circle.setAttribute("opacity", Math.max(0.4, Math.min(1.0, opacity)));
+            circle.setAttribute("stroke", "#ffffff");
+            circle.setAttribute("stroke-width", "1");
+            
+            svgEl.appendChild(circle);
+        });
     };
     
     solidSelect.addEventListener("change", updateEuler);
-    // Initial run
     updateEuler();
+    renderLoop();
 }
 
 /* ==========================================================================
