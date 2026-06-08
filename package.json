@@ -1,0 +1,12 @@
+{
+  "name": "geometry-portfolio",
+  "version": "1.0.0",
+  "description": "Academic Portfolio of Geometry for Roan Omri Nunes Campos",
+  "main": "index.html",
+  "scripts": {
+    "dev": "npx -y http-server . -p 3000 -o"
+  },
+  "keywords": [],
+  "author": "Roan Omri Nunes Campos",
+  "license": "ISC"
+}
