@@ -1,0 +1,848 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apresentação: A Geometria no Período Helenista</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;800&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <style>
+        /* ==========================================================================
+           SLIDES DESIGN SYSTEM & NAVIGATION
+           ========================================================================== */
+        :root {
+            --bg-parchment: #faf3e0;
+            --primary-color: #4a2c11;  /* Dark warm brown */
+            --accent-brown: #5c3a21;   /* Medium brown */
+            --accent-green: #059669;   /* Emerald */
+            --accent-red: #dc2626;     /* Red */
+            --text-color: #2e1e0f;     /* Dark charcoal brown */
+            --border-color: rgba(92, 58, 33, 0.25);
+            --transition-fast: 0.2s ease;
+            
+            --font-headings: 'Cinzel', serif;
+            --font-body: 'Playfair Display', Georgia, serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body, html {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            background-color: #110d0a; /* Dark background to highlight slides */
+            font-family: var(--font-body);
+            color: var(--text-color);
+        }
+
+        /* Presentation Container */
+        .presentation-container {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        /* Slide Container (Parchment Card) */
+        .slide-deck {
+            position: relative;
+            width: 100%;
+            max-width: 1000px;
+            height: 100%;
+            max-height: 650px;
+            background-color: #faf3e0;
+            background: radial-gradient(circle, #fdfaf4 0%, #f6ebd2 70%, #ebdbb8 100%);
+            border: 2px solid var(--accent-brown);
+            outline: 4px double var(--accent-brown);
+            outline-offset: -12px;
+            box-shadow: 
+                inset 0 0 80px rgba(92, 58, 33, 0.18),
+                0 20px 50px rgba(0, 0, 0, 0.6);
+            padding: 50px;
+            border-radius: 4px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            overflow: hidden;
+        }
+
+        .slide-top-bar {
+            position: absolute;
+            top: 14px;
+            left: 14px;
+            width: calc(100% - 28px);
+            height: 4px;
+            background: linear-gradient(90deg, #16a34a 0%, #16a34a 75%, #dc2626 75%, #dc2626 100%);
+            opacity: 0.8;
+            z-index: 10;
+        }
+
+        /* Individual Slide Wrapper */
+        .slide {
+            display: none;
+            width: 100%;
+            height: 100%;
+            flex-direction: column;
+            justify-content: space-between;
+            animation: fadeIn 0.4s ease-in-out;
+        }
+
+        .slide.active {
+            display: flex;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Slide Header */
+        .slide-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px double var(--border-color);
+            padding-bottom: 12px;
+            margin-bottom: 20px;
+        }
+
+        .slide-header h2 {
+            font-family: var(--font-headings);
+            color: var(--primary-color);
+            font-size: 1.6rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .slide-header h2 svg {
+            color: var(--accent-brown);
+        }
+
+        .slide-header .inst-tag {
+            font-family: var(--font-headings);
+            font-size: 0.72rem;
+            letter-spacing: 1px;
+            color: var(--accent-brown);
+            font-weight: 600;
+            text-align: right;
+        }
+
+        /* Slide Body columns */
+        .slide-body {
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            gap: 30px;
+            flex-grow: 1;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        .slide-body.full-width {
+            grid-template-columns: 1fr;
+        }
+
+        .slide-content {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            justify-content: center;
+        }
+
+        .slide-content p {
+            font-size: 1.05rem;
+            line-height: 1.6;
+            text-align: justify;
+        }
+
+        .slide-content ul {
+            list-style: none;
+        }
+
+        .slide-content li {
+            font-size: 1.02rem;
+            line-height: 1.6;
+            margin-bottom: 12px;
+            position: relative;
+            padding-left: 20px;
+            text-align: justify;
+        }
+
+        .slide-content li::before {
+            content: '▲';
+            font-size: 0.7rem;
+            position: absolute;
+            left: 2px;
+            top: 4px;
+            color: var(--accent-brown);
+        }
+
+        /* Nested List */
+        .slide-content li ul {
+            margin-top: 10px;
+        }
+
+        .slide-content li ul li {
+            font-size: 0.95rem;
+            margin-bottom: 8px;
+            padding-left: 15px;
+        }
+
+        .slide-content li ul li::before {
+            content: '-';
+            font-size: 1rem;
+            top: 0px;
+        }
+
+        /* Slide Visual Frame */
+        .slide-visual {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            height: 100%;
+            border: 2px double var(--border-color);
+            padding: 6px;
+            background-color: rgba(253, 250, 244, 0.4);
+            box-shadow: 0 6px 15px rgba(92, 58, 33, 0.08);
+            border-radius: 4px;
+            overflow: hidden;
+            max-height: 350px;
+        }
+
+        .slide-visual img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+            border-radius: 2px;
+        }
+
+        /* ==========================================================================
+           TITLE SLIDE (SLIDE 1)
+           ========================================================================== */
+        .title-slide {
+            text-align: center;
+            justify-content: center !important;
+            gap: 25px;
+        }
+
+        .title-slide h1 {
+            font-family: var(--font-headings);
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            line-height: 1.2;
+            letter-spacing: 0.5px;
+            font-weight: 800;
+        }
+
+        .title-slide .subtitle {
+            font-family: var(--font-headings);
+            font-size: 1.15rem;
+            color: #6e4720;
+            font-weight: 600;
+            letter-spacing: 1px;
+            border-bottom: 2px double var(--border-color);
+            padding-bottom: 15px;
+            max-width: 80%;
+            margin: 0 auto;
+        }
+
+        .title-slide .academic-info {
+            display: flex;
+            justify-content: center;
+            gap: 50px;
+            margin-top: 15px;
+            text-align: left;
+        }
+
+        .academic-info .info-block h3 {
+            font-family: var(--font-headings);
+            font-size: 0.8rem;
+            color: var(--accent-brown);
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .academic-info .info-block p {
+            font-size: 0.95rem;
+            font-weight: 700;
+        }
+
+        .academic-info .info-block span {
+            font-size: 0.72rem;
+            color: var(--text-color);
+            display: block;
+            font-family: monospace;
+        }
+
+        .inst-logo-slide {
+            font-family: var(--font-headings);
+            font-size: 0.95rem;
+            letter-spacing: 1.5px;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+
+        /* ==========================================================================
+           CONTROLS & PROGRESS BAR
+           ========================================================================== */
+        .slide-footer {
+            border-top: 1px solid var(--border-color);
+            padding-top: 15px;
+            margin-top: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 10;
+        }
+
+        .controls-btn-group {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+        }
+
+        .nav-btn {
+            background-color: rgba(92, 58, 33, 0.08);
+            border: 1px solid var(--accent-brown);
+            color: var(--primary-color);
+            font-family: var(--font-headings);
+            font-weight: 700;
+            font-size: 0.8rem;
+            padding: 8px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background var(--transition-fast), color var(--transition-fast);
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .nav-btn:hover {
+            background-color: var(--primary-color);
+            color: #faf3e0;
+        }
+
+        .nav-btn:disabled {
+            opacity: 0.3;
+            cursor: not-allowed;
+        }
+
+        .nav-btn:disabled:hover {
+            background-color: rgba(92, 58, 33, 0.08);
+            color: var(--primary-color);
+        }
+
+        .slide-counter {
+            font-family: var(--font-headings);
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--accent-brown);
+        }
+
+        .progress-bar-container {
+            flex-grow: 1;
+            max-width: 300px;
+            height: 5px;
+            background-color: rgba(92, 58, 33, 0.15);
+            border-radius: 10px;
+            overflow: hidden;
+            margin: 0 20px;
+        }
+
+        .progress-bar-fill {
+            height: 100%;
+            width: 0%;
+            background-color: var(--accent-brown);
+            transition: width 0.3s ease-in-out;
+        }
+
+        .fullscreen-btn {
+            background: none;
+            border: none;
+            color: var(--accent-brown);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 4px;
+            border-radius: 4px;
+            transition: background var(--transition-fast);
+        }
+
+        .fullscreen-btn:hover {
+            background-color: rgba(92, 58, 33, 0.08);
+            color: var(--primary-color);
+        }
+
+        /* Keyboard Tip */
+        .keyboard-tip {
+            font-size: 0.72rem;
+            color: var(--accent-brown);
+            font-style: italic;
+        }
+
+        /* References section bullet spacing override */
+        .references-section li::before {
+            display: none;
+        }
+        .references-section li {
+            padding-left: 12px;
+            text-indent: -12px;
+            font-size: 0.95rem;
+        }
+
+        /* QR Code Slide / Final Slide */
+        .final-slide {
+            text-align: center;
+        }
+        .final-slide-body {
+            display: grid;
+            grid-template-columns: 1.15fr 0.85fr;
+            gap: 30px;
+            flex-grow: 1;
+            align-items: center;
+        }
+        .final-slide-content {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            justify-content: center;
+            text-align: left;
+        }
+        .final-slide-content h3 {
+            font-family: var(--font-headings);
+            color: var(--primary-color);
+            font-size: 1.3rem;
+            margin-bottom: 5px;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 5px;
+        }
+        .final-slide-content p {
+            font-size: 1.05rem;
+            line-height: 1.6;
+        }
+        .final-slide-link {
+            font-family: var(--font-headings);
+            font-size: 1.1rem;
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 700;
+            border-bottom: 2px solid var(--accent-brown);
+            padding-bottom: 2px;
+            transition: color var(--transition-fast), border-color var(--transition-fast);
+            word-break: break-all;
+            display: inline-block;
+            margin-top: 10px;
+        }
+        .final-slide-link:hover {
+            color: var(--accent-green);
+            border-bottom-color: var(--accent-green);
+        }
+        
+        /* Media Queries for Responsiveness */
+        @media (max-width: 900px) {
+            body, html {
+                overflow: auto;
+                height: auto;
+            }
+            .presentation-container {
+                height: auto;
+                min-height: 100vh;
+                padding: 10px;
+            }
+            .slide-deck {
+                max-height: none;
+                height: auto;
+                min-height: 600px;
+                padding: 30px 20px;
+                outline-offset: -8px;
+            }
+            .slide-body, .final-slide-body {
+                grid-template-columns: 1fr;
+                gap: 20px;
+                overflow: visible;
+            }
+            .slide-visual {
+                max-height: 250px;
+                order: -1; /* Place image on top on small viewports */
+            }
+            .slide-header h2 {
+                font-size: 1.3rem;
+            }
+            .title-slide h1 {
+                font-size: 1.8rem;
+            }
+            .title-slide .subtitle {
+                font-size: 1rem;
+                max-width: 100%;
+            }
+            .title-slide .academic-info {
+                flex-direction: column;
+                gap: 15px;
+                text-align: center;
+            }
+            .academic-info .info-block {
+                text-align: center;
+            }
+            .slide-footer {
+                flex-direction: column;
+                gap: 15px;
+                margin-top: 25px;
+            }
+            .progress-bar-container {
+                max-width: 100%;
+                width: 100%;
+                margin: 5px 0;
+            }
+            .keyboard-tip {
+                display: none; /* Hide on mobile/touch screens */
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="presentation-container">
+        <div class="slide-deck">
+            <!-- Colored Institutional Top Stripe -->
+            <div class="slide-top-bar"></div>
+
+            <!-- SLIDE 1: CAPA -->
+            <div class="slide active title-slide">
+                <div class="inst-logo-slide">
+                    INSTITUTO FEDERAL DA BAHIA - IFBA
+                </div>
+                <h1>A Geometria no Período Helenista</h1>
+                <p class="subtitle">O Legado Axiomático e Prático de Alexandria</p>
+                
+                <div class="academic-info">
+                    <div class="info-block">
+                        <h3>Autor</h3>
+                        <p>ROAN OMRI NUNES CAMPOS</p>
+                        <span>IFBA Camaçari • 2022189050003@ifba.edu.br</span>
+                    </div>
+                    <div class="info-block">
+                        <h3>Orientador</h3>
+                        <p>PROF. ALEXANDRE LOPO</p>
+                        <span>IFBA Camaçari • alexandre@ifba.edu.br</span>
+                    </div>
+                </div>
+                  <!-- SLIDE 2: INTRODUÇÃO -->
+            <div class="slide">
+                <header class="slide-header">
+                    <h2>
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+                        Introdução
+                    </h2>
+                    <span class="inst-tag">IFBA • Geometria Helenística</span>
+                </header>
+                <div class="slide-body">
+                    <div class="slide-content">
+                        <p>
+                            O Período Helenista (século IV a.C. ao século I a.C.) consolidou Alexandria como o maior centro científico da antiguidade clássica.
+                        </p>
+                        <p>
+                            Diferente do período grego clássico, focado no debate puramente filosófico, a matemática helenista integrou o rigor dedutivo com aplicações mecânicas e astronômicas práticas.
+                        </p>
+                        <p>
+                            Figuras proeminentes como Euclides, Arquimedes, Eratóstenes, Apolônio e Heron revolucionaram o conhecimento geométrico. O legado deste período é a fundação da matemática como ciência demonstrativa axiomática, que estruturou a lógica científica ocidental, combinada com inventos que desafiaram a engenharia de sua época e influenciaram o desenvolvimento do cálculo integral e da trigonometria.
+                        </p>
+                    </div>
+                    <div class="slide-visual">
+                        <img src="hellenistic_mathematicians.png" alt="Matemáticos de Alexandria">
+                    </div>
+                </div>
+            </div>
+
+            <!-- SLIDE 3: OBJETIVOS -->
+            <div class="slide">
+                <header class="slide-header">
+                    <h2>
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M16.2 7.8l-2 5.6-5.6 2 2-5.6 5.6-2z"/></svg>
+                        Objetivos
+                    </h2>
+                    <span class="inst-tag">IFBA • Geometria Helenística</span>
+                </header>
+                <div class="slide-body">
+                    <div class="slide-content">
+                        <ul>
+                            <li><strong>Geral:</strong> Analisar o desenvolvimento histórico e conceitual da geometria durante o Período Helenista, destacando o método dedutivo de Euclides e as aproximações quantitativas de Arquimedes.</li>
+                            <li><strong>Específicos:</strong>
+                                <ul>
+                                    <li>Investigar a estrutura lógica dos Elementos de Euclides e seus postulados fundamentais.</li>
+                                    <li>Explorar as técnicas de exaustão de Arquimedes para cálculo de áreas e aproximação de pi.</li>
+                                    <li>Compreender o experimento geodésico de Eratóstenes para medição da circunferência da Terra.</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="slide-visual">
+                        <img src="euclid_elements_diagram.png" alt="Elementos de Euclides">
+                    </div>
+                </div>
+            </div>
+
+            <!-- SLIDE 4: METODOLOGIA -->
+            <div class="slide">
+                <header class="slide-header">
+                    <h2>
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 20V10M12 20V4M6 20v-6"/></svg>
+                        Metodologia
+                    </h2>
+                    <span class="inst-tag">IFBA • Geometria Helenística</span>
+                </header>
+                <div class="slide-body">
+                    <div class="slide-content">
+                        <p>
+                            A pesquisa baseia-se em revisão histórico-bibliográfica dos tratados matemáticos clássicos gregos (como os de Euclides e Arquimedes) em articulação com simulações computacionais em geometria dinâmica (GeoGebra).
+                        </p>
+                        <p>
+                            Reconstruímos virtualmente os experimentos históricos, como a medição da sombra do gnómon de Eratóstenes em Alexandria e Siena, a espiral de Arquimedes e a quadratura da parábola, facilitando a visualização pedagógica dos métodos antigos por meio de mídias interativas modernas.
+                        </p>
+                    </div>
+                    <div class="slide-visual">
+                        <img src="eratosthenes_experiment.png" alt="Experimento de Eratóstenes">
+                    </div>
+                </div>
+            </div>
+
+            <!-- SLIDE 5: RESULTADOS - EUCLIDES E ARQUIMEDES -->
+            <div class="slide">
+                <header class="slide-header">
+                    <h2>
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+                        Resultados: Euclides e Arquimedes
+                    </h2>
+                    <span class="inst-tag">IFBA • Geometria Helenística</span>
+                </header>
+                <div class="slide-body">
+                    <div class="slide-content">
+                        <ul>
+                            <li><strong>Rigor Euclidiano:</strong> A análise demonstra que o método axiomático de Euclides estabeleceu um padrão de rigor inigualável, onde teoremas complexos derivam logicamente de apenas cinco postulados comuns.</li>
+                            <li><strong>Exaustão de Arquimedes:</strong> No campo prático, Arquimedes antecipou as ideias fundamentais do cálculo integral com seu método de exaustão para determinar a área sob a parábola e volumes de esferas.</li>
+                        </ul>
+                    </div>
+                    <div class="slide-visual">
+                        <img src="archimedes_exhaustion.png" alt="Exaustão de Arquimedes">
+                    </div>
+                </div>
+            </div>
+
+            <!-- SLIDE 6: RESULTADOS - ERATÓSTENES -->
+            <div class="slide">
+                <header class="slide-header">
+                    <h2>
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10zM2 12h20"/></svg>
+                        Resultados: Eratóstenes
+                    </h2>
+                    <span class="inst-tag">IFBA • Geometria Helenística</span>
+                </header>
+                <div class="slide-body">
+                    <div class="slide-content">
+                        <p>
+                            A reconstrução digital do método de Eratóstenes revelou uma impressionante precisão científica (margem de erro menor que 2% em relação aos dados de satélite atuais).
+                        </p>
+                        <p>
+                            Isso evidencia o poder da geometria trigonométrica básica associada à observação empírica de eventos celestes e medições terrestres sistemáticas.
+                        </p>
+                    </div>
+                    <div class="slide-visual">
+                        <img src="greek_geometry_tools.png" alt="Instrumentos Geométricos">
+                    </div>
+                </div>
+            </div>
+
+            <!-- SLIDE 7: CONSIDERAÇÕES FINAIS -->
+            <div class="slide">
+                <header class="slide-header">
+                    <h2>
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c0 2 2 3 6 3s6-1 6-3v-5"/></svg>
+                        Considerações Final
+                    </h2>
+                    <span class="inst-tag">IFBA • Geometria Helenística</span>
+                </header>
+                <div class="slide-body">
+                    <div class="slide-content">
+                        <p>
+                            O Período Helenista foi o apogeu da geometria dedutiva antiga, demonstrando que a abstração teórica e a aplicabilidade prática caminham juntas. O método axiomático euclidiano estruturou a ciência por dois milênios, e as aproximações de Arquimedes semearam o cálculo moderno.
+                        </p>
+                        <p>
+                            Estudar este legado na educação contemporânea, aliando história da ciência com softwares interativos de geometria dinâmica, humaniza o ensino da matemática, conectando os estudantes com os grandes desafios da antiguidade e estimulando a curiosidade científica por meio do entendimento de que as fórmulas matemáticas são frutos do esforço e da observação humana ao longo do tempo.
+                        </p>
+                    </div>
+                    <div class="slide-visual">
+                        <img src="conic_sections.png" alt="Seções Cônicas">
+                    </div>
+                </div>
+            </div>
+
+            <!-- SLIDE 8: REFERÊNCIAS -->
+            <div class="slide references-section">
+                <header class="slide-header">
+                    <h2>
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
+                        Referências Bibliográficas
+                    </h2>
+                    <span class="inst-tag">IFBA • Geometria Helenística</span>
+                </header>
+                <div class="slide-body full-width">
+                    <div class="slide-content">
+                        <ul>
+                            <li>• EUCLIDES. <em>Os Elementos</em>. Tradução de Irineu Bicudo. São Paulo: Editora UNESP, 2009.</li>
+                            <li>• HEATH, Thomas L. <em>A History of Greek Mathematics: From Thales to Euclid</em>. Oxford: Clarendon Press, 1921.</li>
+                            <li>• NETZ, Reviel. <em>The Works of Archimedes: Translation and Commentary</em>. Cambridge University Press, 2004.</li>
+                            <li>• ROQUE, Tatiana. <em>História da Matemática: Uma visão crítica, desfazendo mitos e lendas</em>. Rio de Janeiro: Zahar, 2012.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SLIDE 9: LABORATÓRIO INTERATIVO -->
+            <div class="slide final-slide">
+                <header class="slide-header">
+                    <h2>
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+                        Laboratório Interativo
+                    </h2>
+                    <span class="inst-tag">IFBA • Geometria Helenística</span>
+                </header>
+                <div class="slide-body final-slide-body">
+                    <div class="final-slide-content">
+                        <h3>Acesse o Portfólio Digital</h3>
+                        <p>
+                            Explore as reconstruções virtuais, simulações em geometria dinâmica utilizando o GeoGebra e outras ferramentas matemáticas que complementam esta pesquisa.
+                        </p>
+                        <p>
+                            <strong>Link de Acesso:</strong><br>
+                            <a href="https://roancampos11.github.io/portfolio-geometria" target="_blank" class="final-slide-link">roancampos11.github.io/portfolio-geometria</a>
+                        </p>
+                        <p style="font-size: 0.85rem; color: var(--accent-brown); margin-top: 15px;">
+                            Instituto Federal de Educação, Ciência e Tecnologia da Bahia<br>
+                            Campus Camaçari • 2026
+                        </p>
+                    </div>
+                    <div class="slide-visual" style="max-height: 220px; padding: 10px; background: white; border: 1px solid var(--accent-brown);">
+                        <img src="qrcode.png" alt="QR Code para o Laboratório Interativo" style="max-height: 100%;">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide Footer with Navigation and Progress -->
+            <footer class="slide-footer">
+                <div class="controls-btn-group">
+                    <button id="btn-prev" class="nav-btn" disabled>
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+                        Anterior
+                    </button>
+                    <button id="btn-next" class="nav-btn">
+                        Próximo
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                    </button>
+                    <span id="slide-num-indicator" class="slide-counter">Slide 1 de 9</span>
+                </div>
+                
+                <div class="progress-bar-container">
+                    <div id="progress-indicator" class="progress-bar-fill"></div>
+                </div>
+
+                <div class="controls-btn-group">
+                    <span class="keyboard-tip">Use ← / → no teclado</span>
+                    <button id="btn-fullscreen" class="fullscreen-btn" title="Tela Cheia">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/></svg>
+                    </button>
+                </div>
+            </footer>
+        </div>
+    </div>
+
+    <!-- Presentation Engine Script -->
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const slides = document.querySelectorAll(".slide");
+            const btnPrev = document.getElementById("btn-prev");
+            const btnNext = document.getElementById("btn-next");
+            const slideCounter = document.getElementById("slide-num-indicator");
+            const progressBar = document.getElementById("progress-indicator");
+            const btnFullscreen = document.getElementById("btn-fullscreen");
+            
+            let currentSlideIdx = 0;
+            const totalSlides = slides.length;
+
+            const updatePresentation = () => {
+                slides.forEach((slide, idx) => {
+                    if (idx === currentSlideIdx) {
+                        slide.classList.add("active");
+                    } else {
+                        slide.classList.remove("active");
+                    }
+                });
+
+                // Update navigation buttons
+                btnPrev.disabled = currentSlideIdx === 0;
+                btnNext.disabled = currentSlideIdx === totalSlides - 1;
+
+                // Update counter and progress bar
+                slideCounter.textContent = `Slide ${currentSlideIdx + 1} de ${totalSlides}`;
+                const progressPercent = ((currentSlideIdx + 1) / totalSlides) * 100;
+                progressBar.style.width = `${progressPercent}%`;
+            };
+
+            const nextSlide = () => {
+                if (currentSlideIdx < totalSlides - 1) {
+                    currentSlideIdx++;
+                    updatePresentation();
+                }
+            };
+
+            const prevSlide = () => {
+                if (currentSlideIdx > 0) {
+                    currentSlideIdx--;
+                    updatePresentation();
+                }
+            };
+
+            // Button Click Listeners
+            btnNext.addEventListener("click", nextSlide);
+            btnPrev.addEventListener("click", prevSlide);
+
+            // Keyboard navigation
+            document.addEventListener("keydown", (e) => {
+                if (e.key === "ArrowRight" || e.key === "Space" || e.key === " ") {
+                    nextSlide();
+                } else if (e.key === "ArrowLeft") {
+                    prevSlide();
+                }
+            });
+
+            // Fullscreen trigger
+            btnFullscreen.addEventListener("click", () => {
+                const element = document.documentElement;
+                if (!document.fullscreenElement) {
+                    element.requestFullscreen().catch((err) => {
+                        console.error(`Error attempting to enable fullscreen: ${err.message}`);
+                    });
+                } else {
+                    document.exitFullscreen();
+                }
+            });
+
+            // Initial view update
+            updatePresentation();
+        });
+    </script>
+</body>
+</html>
