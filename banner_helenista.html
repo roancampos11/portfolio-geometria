@@ -17,10 +17,10 @@
         :root {
             --bg-poster: #ffffff;
             --primary-color: #0f172a; /* Slate 900 */
-            --accent-green: #16a34a;  /* IFBA Dark Green */
+            --accent-green: #059669;  /* IFBA Dark Green - Premium emerald */
             --accent-red: #dc2626;    /* IFBA Red */
-            --border-color: #e2e8f0;  /* Slate 200 */
-            --text-color: #334155;    /* Slate 700 */
+            --border-color: #cbd5e1;  /* Slate 300 */
+            --text-color: #475569;    /* Slate 600 */
             --text-dark: #0f172a;     /* Slate 900 */
             --card-bg: #f8fafc;       /* Slate 50 */
             
@@ -35,23 +35,25 @@
         }
 
         body {
-            background-color: #e2e8f0; /* Gray background for web view */
+            background-color: #cbd5e1; /* Elegant gray background for web preview */
             font-family: var(--font-body);
             color: var(--text-color);
             display: flex;
             justify-content: center;
             align-items: center;
-            padding: 40px 0;
+            padding: 50px 0;
         }
 
-        /* Printable Poster Container (A-Series Portrait Ratio) */
+        /* Printable Poster Container (A-Series Portrait Ratio) with Premium Frame */
         .poster-container {
             width: 900px;
-            min-height: 1270px; /* Golden/A-series ratio */
+            min-height: 1270px;
             background-color: var(--bg-poster);
-            border: 1px solid #94a3b8;
-            box-shadow: 0 20px 50px rgba(15, 23, 42, 0.15);
-            padding: 40px;
+            border: 3px solid var(--primary-color);
+            outline: 1px solid var(--primary-color);
+            outline-offset: -8px;
+            box-shadow: 0 25px 60px rgba(15, 23, 42, 0.25);
+            padding: 45px;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
@@ -68,9 +70,9 @@
             width: 100%;
             height: 100%;
             background-image: 
-                linear-gradient(rgba(15, 23, 42, 0.01) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(15, 23, 42, 0.01) 1px, transparent 1px);
-            background-size: 20px 20px;
+                linear-gradient(rgba(15, 23, 42, 0.015) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(15, 23, 42, 0.015) 1px, transparent 1px);
+            background-size: 25px 25px;
             pointer-events: none;
             z-index: 1;
         }
@@ -78,11 +80,11 @@
         /* Institutional accents */
         .poster-top-bar {
             position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 8px;
-            background: linear-gradient(90deg, var(--accent-green) 0%, var(--accent-green) 70%, var(--accent-red) 70%, var(--accent-red) 100%);
+            top: 8px;
+            left: 8px;
+            width: calc(100% - 16px);
+            height: 6px;
+            background: linear-gradient(90deg, var(--accent-green) 0%, var(--accent-green) 75%, var(--accent-red) 75%, var(--accent-red) 100%);
             z-index: 5;
         }
 
@@ -94,31 +96,32 @@
             flex-direction: column;
             align-items: center;
             text-align: center;
-            border-bottom: 3px double var(--border-color);
+            border-bottom: 2px solid var(--primary-color);
             padding-bottom: 25px;
             margin-bottom: 25px;
             position: relative;
             z-index: 2;
+            margin-top: 10px;
         }
 
         .inst-logo {
             font-family: var(--font-headings);
             font-weight: 800;
             color: var(--accent-green);
-            font-size: 1rem;
+            font-size: 0.95rem;
             letter-spacing: 2px;
             text-transform: uppercase;
-            margin-bottom: 15px;
+            margin-bottom: 12px;
             display: flex;
             align-items: center;
-            gap: 6px;
+            gap: 8px;
         }
 
         .inst-logo::after {
             content: '';
             display: inline-block;
-            width: 8px;
-            height: 8px;
+            width: 6px;
+            height: 6px;
             background-color: var(--accent-red);
             border-radius: 50%;
         }
@@ -126,10 +129,10 @@
         .poster-header h1 {
             font-family: var(--font-headings);
             color: var(--text-dark);
-            font-size: 2rem;
+            font-size: 2.1rem;
             font-weight: 800;
             line-height: 1.25;
-            max-width: 90%;
+            max-width: 95%;
             margin-bottom: 20px;
             letter-spacing: -0.5px;
         }
@@ -143,30 +146,51 @@
             text-align: left;
             background-color: var(--card-bg);
             border: 1px solid var(--border-color);
-            border-radius: 8px;
-            padding: 15px 25px;
+            border-radius: 6px;
+            padding: 12px 20px;
+        }
+
+        .info-block {
+            position: relative;
         }
 
         .info-block h3 {
             font-family: var(--font-headings);
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             text-transform: uppercase;
-            letter-spacing: 1px;
+            letter-spacing: 1.5px;
             color: var(--accent-green);
             margin-bottom: 4px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .info-block h3::before {
+            content: '';
+            display: inline-block;
+            width: 6px;
+            height: 6px;
+            background-color: var(--primary-color);
+            border-radius: 50%;
+        }
+
+        .info-block.advisor h3::before {
+            background-color: var(--accent-red);
         }
 
         .info-block p {
-            font-size: 0.88rem;
-            font-weight: 600;
+            font-size: 0.9rem;
+            font-weight: 700;
             color: var(--text-dark);
         }
 
         .info-block span {
-            font-size: 0.75rem;
+            font-size: 0.7rem;
             color: var(--text-color);
             display: block;
             margin-top: 2px;
+            font-family: monospace;
         }
 
         /* ==========================================================================
@@ -179,7 +203,7 @@
             flex-grow: 1;
             position: relative;
             z-index: 2;
-            margin-bottom: 25px;
+            margin-bottom: 20px;
         }
 
         .poster-column {
@@ -193,10 +217,9 @@
             background-color: var(--bg-poster);
             border: 1px solid var(--border-color);
             border-radius: 8px;
-            padding: 20px;
+            padding: 22px;
             position: relative;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
-            transition: border-color 0.2s;
+            box-shadow: 0 4px 10px rgba(15, 23, 42, 0.02);
         }
 
         .poster-section::before {
@@ -217,26 +240,26 @@
             font-family: var(--font-headings);
             color: var(--text-dark);
             font-size: 1.15rem;
-            font-weight: 700;
+            font-weight: 800;
             text-transform: uppercase;
-            letter-spacing: 0.5px;
+            letter-spacing: 0.75px;
             margin-bottom: 12px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 6px;
         }
 
         .poster-section p {
-            font-size: 0.85rem;
-            line-height: 1.55;
+            font-size: 0.84rem;
+            line-height: 1.6;
             text-align: justify;
+            color: var(--text-color);
         }
 
         /* Custom decorations within sections */
         .geometric-wireframe {
             float: right;
-            width: 60px;
-            height: 60px;
+            width: 50px;
+            height: 50px;
             margin-left: 15px;
             opacity: 0.15;
             stroke: var(--text-dark);
@@ -251,19 +274,25 @@
 
         .poster-section li {
             font-size: 0.82rem;
-            line-height: 1.5;
-            margin-bottom: 8px;
+            line-height: 1.55;
+            margin-bottom: 10px;
             position: relative;
-            padding-left: 15px;
+            padding-left: 18px;
             text-align: justify;
+            color: var(--text-color);
         }
 
         .poster-section li::before {
-            content: '•';
+            content: '▲';
+            font-size: 0.6rem;
             position: absolute;
             left: 0;
+            top: 2px;
             color: var(--accent-green);
-            font-weight: bold;
+        }
+
+        .poster-section.accent-section li::before {
+            color: var(--accent-red);
         }
 
         /* Specific Reference spacing */
@@ -277,17 +306,52 @@
             display: none;
         }
 
+        /* Figure Container Styling (Premium Layout) */
+        .figure-container {
+            margin-top: 15px;
+            background: #ffffff;
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            padding: 10px;
+            box-shadow: 0 4px 12px rgba(15, 23, 42, 0.04);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .poster-image {
+            display: block;
+            width: 100%;
+            max-height: 165px;
+            object-fit: contain;
+            background-color: white;
+            border-radius: 4px;
+        }
+
+        .figure-caption {
+            font-size: 0.72rem;
+            color: var(--text-color);
+            font-style: italic;
+            text-align: center;
+            border-top: 1px dashed var(--border-color);
+            width: 100%;
+            padding-top: 6px;
+            margin-top: 2px;
+        }
+
         /* ==========================================================================
            FOOTER SECTION
            ========================================================================== */
         .poster-footer {
-            border-top: 1px solid var(--border-color);
+            border-top: 2px solid var(--primary-color);
             padding-top: 20px;
             display: flex;
             justify-content: space-between;
             align-items: center;
             position: relative;
             z-index: 2;
+            margin-bottom: 5px;
         }
 
         .footer-left {
@@ -297,12 +361,13 @@
         }
 
         .qr-code-box {
-            width: 80px;
-            height: 80px;
+            width: 75px;
+            height: 75px;
             border: 1px solid var(--border-color);
             border-radius: 6px;
             padding: 4px;
             background-color: white;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
         }
 
         .qr-code-box img {
@@ -318,7 +383,7 @@
         }
 
         .footer-url span {
-            font-size: 0.72rem;
+            font-size: 0.7rem;
             text-transform: uppercase;
             letter-spacing: 0.5px;
             color: var(--accent-green);
@@ -326,7 +391,7 @@
         }
 
         .footer-url a {
-            font-size: 0.88rem;
+            font-size: 0.85rem;
             color: var(--text-dark);
             text-decoration: none;
             font-weight: 700;
@@ -337,18 +402,7 @@
             text-align: right;
             font-size: 0.75rem;
             color: var(--text-color);
-        }
-
-        .poster-image {
-            display: block;
-            width: 100%;
-            max-height: 160px;
-            object-fit: contain;
-            border: 1px solid var(--border-color);
-            border-radius: 6px;
-            margin-top: 12px;
-            background-color: white;
-            padding: 5px;
+            line-height: 1.4;
         }
 
         /* ==========================================================================
@@ -364,6 +418,7 @@
                 width: 100%;
                 height: 100%;
                 border: none;
+                outline: none;
                 box-shadow: none;
                 padding: 0;
             }
@@ -387,7 +442,7 @@
                     <p>ROAN OMRI NUNES CAMPOS</p>
                     <span>IFBA, 2022189050003@IFBA.EDU.BR, CAMAÇARI, BA, BRASIL</span>
                 </div>
-                <div class="info-block">
+                <div class="info-block advisor">
                     <h3>Orientador</h3>
                     <p>PROF. ALEXANDRE LOPO</p>
                     <span>IFBA, ALEXANDRE@IFBA.EDU.BR , CAMAÇARI, BA, BRASIL</span>
@@ -424,7 +479,10 @@
                         <li>• Explorar as técnicas de exaustão de Arquimedes para cálculo de áreas e aproximação de $\pi$.</li>
                         <li>• Compreender o experimento geodésico de Eratóstenes para medição da circunferência da Terra.</li>
                     </ul>
-                    <img src="euclid_elements_diagram.png" alt="Demonstração da Proposição 47 dos Elementos de Euclides" class="poster-image">
+                    <div class="figure-container">
+                        <img src="euclid_elements_diagram.png" alt="Demonstração da Proposição 47 dos Elementos de Euclides" class="poster-image">
+                        <span class="figure-caption">Figura 1: Prova da Proposição 47 (Teorema de Pitágoras) nos Elementos de Euclides</span>
+                    </div>
                 </section>
 
                 <!-- Metodologia -->
@@ -433,7 +491,10 @@
                     <p>
                         A pesquisa baseia-se em revisão histórico-bibliográfica dos tratados matemáticos clássicos gregos (como os de Euclides e Arquimedes) em articulação com simulações computacionais em geometria dinâmica (GeoGebra). Reconstruímos virtualmente os experimentos históricos, como a medição da sombra do gnómon de Eratóstenes em Alexandria e Siena, a espiral de Arquimedes e a quadratura da parábola, facilitando a visualização pedagógica dos métodos antigos por meio de mídias interativas modernas.
                     </p>
-                    <img src="eratosthenes_experiment.png" alt="Esquema do Experimento de Eratóstenes" class="poster-image">
+                    <div class="figure-container">
+                        <img src="eratosthenes_experiment.png" alt="Esquema do Experimento de Eratóstenes" class="poster-image">
+                        <span class="figure-caption">Figura 2: Esquematização da Geometria do Experimento de Medição da Terra de Eratóstenes</span>
+                    </div>
                 </section>
 
             </div>
@@ -447,7 +508,10 @@
                     <p>
                         A análise demonstra que o método axiomático de Euclides estabeleceu um padrão de rigor inigualável, onde teoremas complexos derivam logicamente de apenas cinco postulados comuns. No campo prático, Arquimedes antecipou as ideias fundamentais do cálculo integral com seu método de exaustão para determinar a área sob a parábola e volumes de esferas. A reconstrução digital do método de Eratóstenes revelou uma impressionante precisão científica (margem de erro menor que 2% em relação aos dados de satélite atuais), evidenciando o poder da geometria trigonométrica básica associada à observação empírica de eventos celestes e medições terrestres sistemáticas.
                     </p>
-                    <img src="archimedes_exhaustion.png" alt="Método de Exaustão de Arquimedes" class="poster-image">
+                    <div class="figure-container">
+                        <img src="archimedes_exhaustion.png" alt="Método de Exaustão de Arquimedes" class="poster-image">
+                        <span class="figure-caption">Figura 3: Método de Exaustão de Arquimedes para estimativa dos limites do valor de Pi</span>
+                    </div>
                 </section>
 
                 <!-- Considerações Finais -->
