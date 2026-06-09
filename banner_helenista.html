@@ -3,29 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Banner Científico: Geometria no Período Helenista</title>
+    <title>A Geometria Helenística de Alexandria - Banner Científico</title>
     
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;800&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     
     <style>
         /* ==========================================================================
            POSTER DESIGN SYSTEM & PRINT OPTIONS
            ========================================================================== */
         :root {
-            --bg-poster: #ffffff;
-            --primary-color: #0f172a; /* Slate 900 */
-            --accent-green: #059669;  /* IFBA Dark Green - Premium emerald */
-            --accent-red: #dc2626;    /* IFBA Red */
-            --border-color: #cbd5e1;  /* Slate 300 */
-            --text-color: #475569;    /* Slate 600 */
-            --text-dark: #0f172a;     /* Slate 900 */
-            --card-bg: #f8fafc;       /* Slate 50 */
+            --bg-poster: #faf3e0;
+            --primary-color: #4a2c11;  /* Dark warm brown */
+            --accent-brown: #5c3a21;   /* Medium brown */
+            --text-color: #2e1e0f;     /* Very dark charcoal brown */
+            --border-color: rgba(92, 58, 33, 0.3);
             
-            --font-headings: 'Outfit', sans-serif;
-            --font-body: 'Inter', sans-serif;
+            --font-headings: 'Cinzel', serif;
+            --font-body: 'Playfair Display', Georgia, serif;
         }
 
         * {
@@ -35,7 +32,7 @@
         }
 
         body {
-            background-color: #cbd5e1; /* Elegant gray background for web preview */
+            background-color: #15110d; /* Dark environment for parchment contrast */
             font-family: var(--font-body);
             color: var(--text-color);
             display: flex;
@@ -44,16 +41,20 @@
             padding: 50px 0;
         }
 
-        /* Printable Poster Container (A-Series Portrait Ratio) with Premium Frame */
+        /* Printable Poster Container (A-Series Portrait Ratio) with Parchment Aesthetics */
         .poster-container {
             width: 900px;
             min-height: 1270px;
-            background-color: var(--bg-poster);
-            border: 3px solid var(--primary-color);
-            outline: 1px solid var(--primary-color);
-            outline-offset: -8px;
-            box-shadow: 0 25px 60px rgba(15, 23, 42, 0.25);
-            padding: 45px;
+            background-color: #faf3e0;
+            /* Radial gradient overlay simulating aged parchment paper */
+            background: radial-gradient(circle, #fdfaf4 0%, #f6ebd2 70%, #ebdbb8 100%);
+            border: 2px solid var(--accent-brown);
+            outline: 4px double var(--accent-brown);
+            outline-offset: -12px;
+            box-shadow: 
+                inset 0 0 100px rgba(92, 58, 33, 0.2),
+                0 25px 60px rgba(0, 0, 0, 0.45);
+            padding: 45px 50px;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
@@ -61,7 +62,7 @@
             overflow: hidden;
         }
 
-        /* Mathematical Grid background for scientific texture */
+        /* Subtle mathematical layout lines in background */
         .poster-container::before {
             content: '';
             position: absolute;
@@ -70,22 +71,23 @@
             width: 100%;
             height: 100%;
             background-image: 
-                linear-gradient(rgba(15, 23, 42, 0.015) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(15, 23, 42, 0.015) 1px, transparent 1px);
-            background-size: 25px 25px;
+                linear-gradient(rgba(92, 58, 33, 0.015) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(92, 58, 33, 0.015) 1px, transparent 1px);
+            background-size: 30px 30px;
             pointer-events: none;
             z-index: 1;
         }
 
-        /* Institutional accents */
+        /* Institutional accents - stylized thin band */
         .poster-top-bar {
             position: absolute;
-            top: 8px;
-            left: 8px;
-            width: calc(100% - 16px);
-            height: 6px;
-            background: linear-gradient(90deg, var(--accent-green) 0%, var(--accent-green) 75%, var(--accent-red) 75%, var(--accent-red) 100%);
+            top: 14px;
+            left: 14px;
+            width: calc(100% - 28px);
+            height: 4px;
+            background: linear-gradient(90deg, #16a34a 0%, #16a34a 75%, #dc2626 75%, #dc2626 100%);
             z-index: 5;
+            opacity: 0.85;
         }
 
         /* ==========================================================================
@@ -96,101 +98,73 @@
             flex-direction: column;
             align-items: center;
             text-align: center;
-            border-bottom: 2px solid var(--primary-color);
-            padding-bottom: 25px;
+            border-bottom: 2px double var(--border-color);
+            padding-bottom: 20px;
             margin-bottom: 25px;
             position: relative;
             z-index: 2;
-            margin-top: 10px;
+            margin-top: 5px;
         }
 
         .inst-logo {
             font-family: var(--font-headings);
-            font-weight: 800;
-            color: var(--accent-green);
-            font-size: 0.95rem;
-            letter-spacing: 2px;
+            font-weight: 700;
+            color: var(--primary-color);
+            font-size: 0.88rem;
+            letter-spacing: 1.5px;
             text-transform: uppercase;
-            margin-bottom: 12px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
+            margin-bottom: 8px;
         }
 
-        .inst-logo::after {
-            content: '';
-            display: inline-block;
-            width: 6px;
-            height: 6px;
-            background-color: var(--accent-red);
-            border-radius: 50%;
+        .inst-logo span {
+            font-weight: 400;
+            text-transform: none;
+            font-size: 0.8rem;
+            display: block;
+            margin-top: 2px;
+            letter-spacing: 0.5px;
         }
 
         .poster-header h1 {
             font-family: var(--font-headings);
-            color: var(--text-dark);
-            font-size: 2.1rem;
-            font-weight: 800;
+            color: var(--primary-color);
+            font-size: 2.15rem;
+            font-weight: 700;
             line-height: 1.25;
             max-width: 95%;
-            margin-bottom: 20px;
-            letter-spacing: -0.5px;
+            margin-top: 12px;
+            margin-bottom: 6px;
+            letter-spacing: 0.5px;
         }
 
-        /* Authors and Advisors grid */
-        .people-info {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            width: 100%;
-            gap: 20px;
-            text-align: left;
-            background-color: var(--card-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 6px;
-            padding: 12px 20px;
-        }
-
-        .info-block {
-            position: relative;
-        }
-
-        .info-block h3 {
+        .poster-header .subtitle {
             font-family: var(--font-headings);
-            font-size: 0.75rem;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            color: var(--accent-green);
-            margin-bottom: 4px;
-            display: flex;
-            align-items: center;
-            gap: 6px;
+            color: #6e4720;
+            font-size: 0.95rem;
+            font-weight: 600;
+            margin-bottom: 0px;
+            letter-spacing: 0.5px;
         }
 
-        .info-block h3::before {
-            content: '';
-            display: inline-block;
-            width: 6px;
-            height: 6px;
-            background-color: var(--primary-color);
-            border-radius: 50%;
+        /* ==========================================================================
+           HERO IMAGE LAYOUT
+           ========================================================================== */
+        .hero-image-container {
+            width: 100%;
+            margin-bottom: 25px;
+            border: 3px double var(--accent-brown);
+            padding: 4px;
+            background-color: #faf3e0;
+            box-shadow: 0 8px 20px rgba(92, 58, 33, 0.12);
+            position: relative;
+            z-index: 2;
         }
 
-        .info-block.advisor h3::before {
-            background-color: var(--accent-red);
-        }
-
-        .info-block p {
-            font-size: 0.9rem;
-            font-weight: 700;
-            color: var(--text-dark);
-        }
-
-        .info-block span {
-            font-size: 0.7rem;
-            color: var(--text-color);
+        .hero-image-container img {
+            width: 100%;
+            max-height: 380px;
+            object-fit: cover;
             display: block;
-            margin-top: 2px;
-            font-family: monospace;
         }
 
         /* ==========================================================================
@@ -199,7 +173,7 @@
         .poster-body {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 30px;
+            gap: 35px;
             flex-grow: 1;
             position: relative;
             z-index: 2;
@@ -209,62 +183,43 @@
         .poster-column {
             display: flex;
             flex-direction: column;
-            gap: 25px;
+            gap: 20px;
         }
 
         /* Section boxes */
         .poster-section {
-            background-color: var(--bg-poster);
-            border: 1px solid var(--border-color);
-            border-radius: 8px;
-            padding: 22px;
+            background-color: rgba(253, 250, 244, 0.35);
+            border: 1px solid rgba(92, 58, 33, 0.2);
+            border-radius: 4px;
+            padding: 18px 20px;
             position: relative;
-            box-shadow: 0 4px 10px rgba(15, 23, 42, 0.02);
-        }
-
-        .poster-section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 20px;
-            width: 40px;
-            height: 3px;
-            background-color: var(--accent-green);
-        }
-
-        .poster-section.accent-section::before {
-            background-color: var(--accent-red);
         }
 
         .poster-section h2 {
             font-family: var(--font-headings);
-            color: var(--text-dark);
-            font-size: 1.15rem;
-            font-weight: 800;
+            color: var(--primary-color);
+            font-size: 1.05rem;
+            font-weight: 700;
             text-transform: uppercase;
-            letter-spacing: 0.75px;
+            letter-spacing: 0.5px;
             margin-bottom: 12px;
-            border-bottom: 1px solid var(--border-color);
+            border-bottom: 2px double var(--border-color);
             padding-bottom: 6px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .poster-section h2 svg {
+            flex-shrink: 0;
+            opacity: 0.85;
         }
 
         .poster-section p {
-            font-size: 0.84rem;
+            font-size: 0.85rem;
             line-height: 1.6;
             text-align: justify;
             color: var(--text-color);
-        }
-
-        /* Custom decorations within sections */
-        .geometric-wireframe {
-            float: right;
-            width: 50px;
-            height: 50px;
-            margin-left: 15px;
-            opacity: 0.15;
-            stroke: var(--text-dark);
-            fill: none;
-            stroke-width: 1.5;
         }
 
         /* Lists */
@@ -275,7 +230,7 @@
         .poster-section li {
             font-size: 0.82rem;
             line-height: 1.55;
-            margin-bottom: 10px;
+            margin-bottom: 8px;
             position: relative;
             padding-left: 18px;
             text-align: justify;
@@ -283,21 +238,35 @@
         }
 
         .poster-section li::before {
-            content: '▲';
-            font-size: 0.6rem;
+            content: '•';
+            font-size: 1.1rem;
             position: absolute;
-            left: 0;
-            top: 2px;
-            color: var(--accent-green);
+            left: 2px;
+            top: -2px;
+            color: var(--accent-brown);
         }
 
-        .poster-section.accent-section li::before {
-            color: var(--accent-red);
+        /* Nested lists */
+        .poster-section li ul {
+            margin-top: 6px;
         }
 
-        /* Specific Reference spacing */
+        .poster-section li ul li {
+            font-size: 0.8rem;
+            margin-bottom: 6px;
+            padding-left: 15px;
+        }
+
+        .poster-section li ul li::before {
+            content: '-';
+            font-size: 0.9rem;
+            top: -1px;
+            left: 2px;
+        }
+
+        /* References specific styling */
         .references-section li {
-            margin-bottom: 12px;
+            margin-bottom: 10px;
             padding-left: 12px;
             text-indent: -12px;
         }
@@ -306,46 +275,12 @@
             display: none;
         }
 
-        /* Figure Container Styling (Premium Layout) */
-        .figure-container {
-            margin-top: 15px;
-            background: #ffffff;
-            border: 1px solid var(--border-color);
-            border-radius: 6px;
-            padding: 10px;
-            box-shadow: 0 4px 12px rgba(15, 23, 42, 0.04);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .poster-image {
-            display: block;
-            width: 100%;
-            max-height: 165px;
-            object-fit: contain;
-            background-color: white;
-            border-radius: 4px;
-        }
-
-        .figure-caption {
-            font-size: 0.72rem;
-            color: var(--text-color);
-            font-style: italic;
-            text-align: center;
-            border-top: 1px dashed var(--border-color);
-            width: 100%;
-            padding-top: 6px;
-            margin-top: 2px;
-        }
-
         /* ==========================================================================
            FOOTER SECTION
            ========================================================================== */
         .poster-footer {
-            border-top: 2px solid var(--primary-color);
-            padding-top: 20px;
+            border-top: 1px solid var(--border-color);
+            padding-top: 15px;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -357,17 +292,17 @@
         .footer-left {
             display: flex;
             align-items: center;
-            gap: 20px;
+            gap: 15px;
         }
 
         .qr-code-box {
-            width: 75px;
-            height: 75px;
+            width: 70px;
+            height: 70px;
             border: 1px solid var(--border-color);
-            border-radius: 6px;
-            padding: 4px;
+            border-radius: 4px;
+            padding: 3px;
             background-color: white;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            box-shadow: 0 2px 8px rgba(92, 58, 33, 0.08);
         }
 
         .qr-code-box img {
@@ -379,20 +314,20 @@
         .footer-url {
             display: flex;
             flex-direction: column;
-            gap: 4px;
+            gap: 2px;
         }
 
         .footer-url span {
-            font-size: 0.7rem;
+            font-size: 0.68rem;
             text-transform: uppercase;
             letter-spacing: 0.5px;
-            color: var(--accent-green);
+            color: #6e4720;
             font-weight: 600;
         }
 
         .footer-url a {
-            font-size: 0.85rem;
-            color: var(--text-dark);
+            font-size: 0.82rem;
+            color: var(--primary-color);
             text-decoration: none;
             font-weight: 700;
             font-family: monospace;
@@ -400,8 +335,8 @@
 
         .footer-right {
             text-align: right;
-            font-size: 0.75rem;
-            color: var(--text-color);
+            font-size: 0.72rem;
+            color: #5c3a21;
             line-height: 1.4;
         }
 
@@ -433,72 +368,53 @@
 
         <!-- Header -->
         <header class="poster-header">
-            <div class="inst-logo">Instituto Federal da Bahia • IFBA</div>
-            <h1>A Geometria no Período Helenista: O Legado Axiomático e Prático de Alexandria</h1>
-            
-            <div class="people-info">
-                <div class="info-block">
-                    <h3>Autor</h3>
-                    <p>ROAN OMRI NUNES CAMPOS</p>
-                    <span>IFBA, 2022189050003@IFBA.EDU.BR, CAMAÇARI, BA, BRASIL</span>
-                </div>
-                <div class="info-block advisor">
-                    <h3>Orientador</h3>
-                    <p>PROF. ALEXANDRE LOPO</p>
-                    <span>IFBA, ALEXANDRE@IFBA.EDU.BR , CAMAÇARI, BA, BRASIL</span>
-                </div>
+            <div class="inst-logo">
+                INSTITUTO FEDERAL DE EDUCAÇÃO,<br>
+                CIÊNCIA E TECNOLOGIA DA BAHIA – IFBA
+                <span>Campus Camaçari</span>
             </div>
+            <h1>A Geometria Helenística de Alexandria</h1>
+            <p class="subtitle">O Legado Axiomático e Prático da Matemática Grega</p>
         </header>
 
-        <!-- Main Body -->
+        <!-- Large Classical Hero Image -->
+        <div class="hero-image-container">
+            <img src="hellenistic_mathematicians.png" alt="Matemáticos Helenísticos de Alexandria (Euclides, Arquimedes e Eratóstenes)">
+        </div>
+
+        <!-- Main Body Grid -->
         <div class="poster-body">
             <!-- Left Column -->
             <div class="poster-column">
                 
-                <!-- Introdução -->
+                <!-- Objetivos do Trabalho -->
                 <section class="poster-section">
-                    <h2>Introdução</h2>
-                    <!-- Geometric Wireframe decoration -->
-                    <svg class="geometric-wireframe" viewBox="0 0 100 100">
-                        <polygon points="50,5 95,35 95,75 50,95 5,75 5,35" />
-                        <line x1="50" y1="5" x2="50" y2="95" />
-                        <line x1="5" y1="35" x2="95" y2="35" />
-                        <line x1="5" y1="75" x2="95" y2="75" />
-                    </svg>
-                    <p>
-                        O Período Helenista (século IV a.C. ao século I a.C.) consolidou Alexandria como o maior centro científico da antiguidade clássica. Diferente do período grego clássico, focado no debate puramente filosófico, a matemática helenista integrou o rigor dedutivo com aplicações mecânicas e astronômicas práticas. Figuras proeminentes como Euclides, Arquimedes, Eratóstenes, Apolônio e Heron revolucionaram o conhecimento geométrico. O legado deste período é a fundação da matemática como ciência demonstrativa axiomática, que estruturou a lógica científica ocidental, combinada com inventos que desafiaram a engenharia de sua época e influenciaram o desenvolvimento do cálculo integral e da trigonometria.
-                    </p>
-                    <div class="figure-container">
-                        <img src="greek_geometry_tools.png" alt="Instrumentos da Geometria Grega" class="poster-image">
-                        <span class="figure-caption">Figura 1: Ferramentas clássicas da geometria helenista (régua, compasso e pergaminhos)</span>
-                    </div>
-                </section>
-
-                <!-- Objetivos -->
-                <section class="poster-section">
-                    <h2>Objetivos</h2>
+                    <h2>
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M16.2 7.8l-2 5.6-5.6 2 2-5.6 5.6-2z"/></svg>
+                        Objetivos do Trabalho
+                    </h2>
                     <ul>
-                        <li><strong>Geral:</strong> Analisar o desenvolvimento histórico e conceitual da geometria durante o Período Helenista, destacando o método dedutivo de Euclides e as aproximações quantitativas de Arquimedes.</li>
-                        <li><strong>Específicos:</strong> • Investigar a estrutura lógica dos <em>Elementos</em> de Euclides e seus postulados fundamentais.</li>
-                        <li>• Explorar as técnicas de exaustão de Arquimedes para cálculo de áreas e aproximação de $\pi$.</li>
-                        <li>• Compreender o experimento geodésico de Eratóstenes para medição da circunferência da Terra.</li>
+                        <li><strong>Geral:</strong> Analisar o avanço histórico e conceitual da geometria no período, focando no método dedutivo de Euclides e nas aproximações quantitativas de Arquimedes.</li>
+                        <li><strong>Específicos:</strong>
+                            <ul>
+                                <li>Investigar a lógica dos Elementos de Euclides e seus postulados.</li>
+                                <li>Explorar o método de exaustão de Arquimedes para o cálculo de áreas e aproximação de $\pi$.</li>
+                            </ul>
+                        </li>
                     </ul>
-                    <div class="figure-container">
-                        <img src="euclid_elements_diagram.png" alt="Demonstração da Proposição 47 dos Elementos de Euclides" class="poster-image">
-                        <span class="figure-caption">Figura 2: Prova da Proposição 47 (Teorema de Pitágoras) nos Elementos de Euclides</span>
-                    </div>
                 </section>
 
-                <!-- Metodologia -->
-                <section class="poster-section accent-section">
-                    <h2>Metodologia</h2>
-                    <p>
-                        A pesquisa baseia-se em revisão histórico-bibliográfica dos tratados matemáticos clássicos gregos (como os de Euclides e Arquimedes) em articulação com simulações computacionais em geometria dinâmica (GeoGebra). Reconstruímos virtualmente os experimentos históricos, como a medição da sombra do gnómon de Eratóstenes em Alexandria e Siena, a espiral de Arquimedes e a quadratura da parábola, facilitando a visualização pedagógica dos métodos antigos por meio de mídias interativas modernas.
-                    </p>
-                    <div class="figure-container">
-                        <img src="eratosthenes_experiment.png" alt="Esquema do Experimento de Eratóstenes" class="poster-image">
-                        <span class="figure-caption">Figura 3: Esquematização da Geometria do Experimento de Medição da Terra de Eratóstenes</span>
-                    </div>
+                <!-- Referências -->
+                <section class="poster-section references-section">
+                    <h2>
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20M4 4.5A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5v-15z"/></svg>
+                        Referências
+                    </h2>
+                    <ul>
+                        <li>• EUCLIDES. <em>Os Elementos</em>, Tradução de Irineu Bicudo. São Paulo: Editora UNESP, 2009.</li>
+                        <li>• HEATH, Thomas L. <em>A History of Greek Mathematics</em>, From Thales to Euclid. Oxford: Clarendon Press, 1921.</li>
+                        <li>• NETZ, Reviel, <em>The Works of Archimedes: Translation and Commentary</em>. Cambridge University Press, 2004.</li>
+                    </ul>
                 </section>
 
             </div>
@@ -506,38 +422,28 @@
             <!-- Right Column -->
             <div class="poster-column">
                 
-                <!-- Resultados -->
+                <!-- Metodologia -->
                 <section class="poster-section">
-                    <h2>Resultados</h2>
-                    <p>
-                        A análise demonstra que o método axiomático de Euclides estabeleceu um padrão de rigor inigualável, onde teoremas complexos derivam logicamente de apenas cinco postulados comuns. No campo prático, Arquimedes antecipou as ideias fundamentais do cálculo integral com seu método de exaustão para determinar a área sob a parábola e volumes de esferas. A reconstrução digital do método de Eratóstenes revelou uma impressionante precisão científica (margem de erro menor que 2% em relação aos dados de satélite atuais), evidenciando o poder da geometria trigonométrica básica associada à observação empírica de eventos celestes e medições terrestres sistemáticas.
-                    </p>
-                    <div class="figure-container">
-                        <img src="archimedes_exhaustion.png" alt="Método de Exaustão de Arquimedes" class="poster-image">
-                        <span class="figure-caption">Figura 4: Método de Exaustão de Arquimedes para estimativa dos limites do valor de Pi</span>
-                    </div>
+                    <h2>
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 20V10M12 20V4M6 20v-6"/></svg>
+                        Metodologia
+                    </h2>
+                    <ul>
+                        <li>O trabalho combina uma revisão histórico-bibliográfica dos tratados clássicos com o uso de geometria dinâmica moderna (GeoGebra).</li>
+                        <li>Foram reconstruídos virtualmente experimentos históricos como a circunferência da Terra.</li>
+                        <li><strong>Roque:</strong> Tatiana. Reconstrução digital do seu experimento mostrou uma precisão impressionante, com margem de erro menor que 2% se comparada aos dados de satélite atuais.</li>
+                    </ul>
                 </section>
 
                 <!-- Considerações Finais -->
                 <section class="poster-section">
-                    <h2>Considerações Finais</h2>
-                    <p>
-                        O Período Helenista foi o apogeu da geometria dedutiva antiga, demonstrando que a abstração teórica e a aplicabilidade prática caminham juntas. O método axiomático euclidiano estruturou a ciência por dois milênios, e as aproximações de Arquimedes semearam o cálculo moderno. Estudar este legado na educação contemporânea, aliando história da ciência com softwares interativos de geometria dinâmica, humaniza o ensino da matemática. Isso conecta os estudantes com os grandes desafios da antiguidade e estimula a curiosidade científica por meio do entendimento de que as fórmulas matemáticas são frutos do esforço e da observação humana ao longo do tempo.
-                    </p>
-                    <div class="figure-container">
-                        <img src="conic_sections.png" alt="Seções Cônicas de Apolônio" class="poster-image">
-                        <span class="figure-caption">Figura 5: As Seções Cônicas de Apolônio de Perga obtidas pela interseção de planos em um cone duplo</span>
-                    </div>
-                </section>
-
-                <!-- Referências -->
-                <section class="poster-section references-section">
-                    <h2>Referências</h2>
+                    <h2>
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c0 2 2 3 6 3s6-1 6-3v-5"/></svg>
+                        Considerações Finais
+                    </h2>
                     <ul>
-                        <li>• EUCLIDES. <em>Os Elementos</em>. Tradução de Irineu Bicudo. São Paulo: Editora UNESP, 2009.</li>
-                        <li>• HEATH, Thomas L. <em>A History of Greek Mathematics: From Thales to Euclid</em>. Oxford: Clarendon Press, 1921.</li>
-                        <li>• NETZ, Reviel. <em>The Works of Archimedes: Translation and Commentary</em>. Cambridge University Press, 2004.</li>
-                        <li>• ROQUE, Tatiana. <em>História da Matemática: Uma visão crítica, desfazendo mitos e lendas</em>. Rio de Janeiro: Zahar, 2012.</li>
+                        <li>O período provou que a teoria e a prática andam juntas. O modelo euclidiano estruturou a ciência por dois milênios e Arquimedes semeou o cálculo moderno.</li>
+                        <li>Trazer essa abordagem histórica aliada a softwares interativos para as salas de aula de hoje, ajuda a humanizar o ensino da matemática, conectando o período helenista a aplicações modernas e reais.</li>
                     </ul>
                 </section>
 
